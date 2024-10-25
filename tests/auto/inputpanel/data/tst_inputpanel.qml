@@ -655,6 +655,15 @@ Rectangle {
             compare(inputPanel.soundEffectSpy.count, 2)
         }
 
+        function test_keySoundVolume() {
+            inputPanel.setKeySoundVolume(0.5)
+            compare(inputPanel.keySoundVolumeSpy.count, 1)
+            compare(inputPanel.keySoundVolume(), 0.5);
+            inputPanel.setKeySoundVolume(1.5)
+            compare(inputPanel.keySoundVolumeSpy.count, 2)
+            compare(inputPanel.keySoundVolume(), 1.0);
+        }
+
         function test_navigationKeyInputSequence_data() {
             return [
                 { initialKey: Qt.Key_Space, initInputMethodHints: Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase, inputSequence: "\u00E1\u017C", outputText: "\u00E1\u017C" },

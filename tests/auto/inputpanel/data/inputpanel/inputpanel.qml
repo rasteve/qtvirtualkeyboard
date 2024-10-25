@@ -56,6 +56,7 @@ InputPanel {
     property alias dragSymbolModeSpy: dragSymbolModeSpy
     property alias styleSpy: styleSpy
     property alias soundEffectSpy: soundEffectSpy
+    property alias keySoundVolumeSpy: keySoundVolumeSpy
     property alias inputMethodResultSpy: inputMethodResultSpy
     property alias wordCandidateListChangedSpy: wordCandidateListChangedSpy
     property alias wordCandidateListItemSelectedSpy: wordCandidateListItemSelectedSpy
@@ -65,7 +66,6 @@ InputPanel {
     property alias shiftStateSpy: shiftStateSpy
     property alias shadowInputControlVisibleSpy: shadowInputControlVisibleSpy
     property alias externalLanguageSwitchSpy: externalLanguageSwitchSpy
-
     signal inputMethodResult(var text)
 
     LayoutMirroring.childrenInherit: true
@@ -135,6 +135,12 @@ InputPanel {
         id: soundEffectSpy
         target: keyboard.soundEffect
         signalName: "onPlayingChanged"
+    }
+
+    SignalSpy {
+        id: keySoundVolumeSpy
+        target: VirtualKeyboardSettings
+        signalName: "keySoundVolumeChanged"
     }
 
     SignalSpy {
@@ -768,5 +774,13 @@ InputPanel {
 
     function setCloseOnReturn(enabled) {
         VirtualKeyboardSettings.closeOnReturn = enabled
+    }
+
+    function keySoundVolume() {
+        return VirtualKeyboardSettings.keySoundVolume
+    }
+
+    function setKeySoundVolume(volume) {
+        VirtualKeyboardSettings.keySoundVolume = volume
     }
 }

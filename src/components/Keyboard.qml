@@ -808,8 +808,10 @@ Item {
                 var multiSoundEffect = __sounds[soundId]
                 if (!multiSoundEffect)
                     multiSoundEffect = register(sound)
-                if (multiSoundEffect)
+                if (multiSoundEffect) {
+                    multiSoundEffect.soundVolume = VirtualKeyboardSettings.convertVolume(VirtualKeyboardSettings.keySoundVolume)
                     multiSoundEffect.play()
+                }
             }
         }
 
