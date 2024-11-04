@@ -8,7 +8,7 @@ import QtQuick.Layouts
 
 KeyboardLayoutLoader {
     function createInputMethod() {
-        return Qt.createQmlObject('import QtQuick; import QtQuick.VirtualKeyboard.Plugins; JapaneseInputMethod {}', parent, "japaneseInputMethod")
+        return Qt.createQmlObject('import QtQuick; import QtQuick.VirtualKeyboard.Plugins; JapaneseInputMethod {}', parent, "inputMethod.qml")
     }
 
     function __pickInputMode(mode) {
