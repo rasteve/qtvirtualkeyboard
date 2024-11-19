@@ -598,7 +598,8 @@ QList<QVirtualKeyboardInputEngine::InputMode> OpenWnnInputMethod::inputModes(con
             << QVirtualKeyboardInputEngine::InputMode::Hiragana
             << QVirtualKeyboardInputEngine::InputMode::Katakana
             << QVirtualKeyboardInputEngine::InputMode::FullwidthLatin
-            << QVirtualKeyboardInputEngine::InputMode::Latin;
+            << QVirtualKeyboardInputEngine::InputMode::Latin
+            << QVirtualKeyboardInputEngine::InputMode::HiraganaFlick;
 }
 
 bool OpenWnnInputMethod::setInputMode(const QString &locale, QVirtualKeyboardInputEngine::InputMode inputMode)
@@ -616,6 +617,9 @@ bool OpenWnnInputMethod::setInputMode(const QString &locale, QVirtualKeyboardInp
     case QVirtualKeyboardInputEngine::InputMode::Katakana:
         d->changeEngineMode(OpenWnnInputMethodPrivate::ENGINE_MODE_FULL_KATAKANA);
         break;
+
+    case QVirtualKeyboardInputEngine::InputMode::HiraganaFlick:
+        d->changeEngineMode(OpenWnnInputMethodPrivate::ENGINE_MODE_DEFAULT);
 
     default:
         d->changeEngineMode(OpenWnnInputMethodPrivate::ENGINE_MODE_DIRECT);

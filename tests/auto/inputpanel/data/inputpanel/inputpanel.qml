@@ -326,6 +326,8 @@ InputPanel {
             return InputEngine.InputMode.Stroke
         else if (inputModeName === "Romaji")
             return InputEngine.InputMode.Romaji
+        else if (inputModeName === "HiraganaFlick")
+            return InputEngine.InputMode.HiraganaFlick
         else
             return -1
     }
@@ -366,6 +368,7 @@ InputPanel {
         testcase.verify(InputEngine.InputMode.Thai !== undefined)
         testcase.verify(InputEngine.InputMode.Stroke !== undefined)
         testcase.verify(InputEngine.InputMode.Romaji !== undefined)
+        testcase.verify(InputEngine.InputMode.HiraganaFlick !== undefined)
         testcase.verify(InputEngine.PatternRecognitionMode.None !== undefined)
         testcase.verify(InputEngine.PatternRecognitionMode.PatternRecognitionDisabled !== undefined)
         testcase.verify(InputEngine.PatternRecognitionMode.Handwriting !== undefined)
@@ -441,7 +444,8 @@ InputPanel {
             testcase.mousePress(inputPanel, virtualKeyPressPoint.x, virtualKeyPressPoint.y)
             testcase.wait(1)
             if (alternativeKey) {
-                alternativeKeysSpy.wait()
+                if (keyObj.keyType !== QtVirtualKeyboard.KeyType.FlickKey)
+                    alternativeKeysSpy.wait()
                 var keyIndex = keyObj.effectiveAlternativeKeys.indexOf(key.toLowerCase())
                 var itemX = keyIndex * keyboard.style.alternateKeysListItemWidth + keyboard.style.alternateKeysListItemWidth / 2
                 virtualKeyPressPoint.x = inputPanel.mapFromItem(alternativeKeys.listView, itemX, 0).x

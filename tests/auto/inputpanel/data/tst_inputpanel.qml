@@ -1226,6 +1226,8 @@ Rectangle {
                 //              2. Change input mode to Katakana.
                 //              3. The input sequence should be committed leaving the cursor in the middle.
                 { initLocale: "ja_JP", initInputMode: "Hiragana", inputSequence: ["n","i","h","o","n","g","o",Qt.Key_Left,Qt.Key_Left,Qt.Key_Left,Qt.Key_Mode_switch], outputText: "\u306B\u307B\u3093\u3054", expectedCursorPosition: 2 },
+                // HiraganaFlick
+                { initLocale: "ja_JP", initInputMode: "HiraganaFlick", inputSequence: ["\u3092","\u306A","\u3099","\u308F","\u3001","\u305F"], outputText: "\u3092\u306A\u3099\u308F\u3001\u305F" },
             ]
         }
 
